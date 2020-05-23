@@ -8,6 +8,7 @@ import keysharing
 name = "user1"
 peername = "user2"
 d = input("do you want to generate new private/public keys?<y>/<n>\n")
+
 if (d == 'y'):
     keygen.gen(name)
 else:
@@ -22,8 +23,7 @@ else:
             msg = input("enter a message: ")
             encmsg, iv = aes.enc(msg, p)
             print(encmsg)
-
-        # key sharing
+            # key sharing
             print("peer's public key was found, exchanging password..")
             encryptedpassword = keysharing.enc(peerpublickeypath, p)
             print(encryptedpassword)
@@ -32,8 +32,24 @@ else:
             keyinfo = {"password": encryptedpassword, "iv": iv,
                        name+"publickey": mypubkey, "encmsg": encmsg}
             # we save the encrypted msg and key info to file
-            with open(name+'_msg.txt', 'wb+')as f:
+            with open("./encryptedmsg/"+name+'_msg.txt', 'wb+')as f:
                 f.write(pickle.dumps(keyinfo))
             print("msg encrypted and saved.")
         else:
             print("can find peer's public key file, please add it to directory")
+    if(o == '2'):
+        # change name to peername for final application
+        encryptedmsgpath = "./encryptedmsg/"+name+"_msg.txt"
+        encryptedmsgexits = os.path.isfile(encryptedmsgpath)
+        if(encryptedmsgexits):
+            # load encrypted msg
+            with open("./encryptedmsg/"+name+'_msg.txt', 'rb+')as f:
+                encryptedmsg = pickle.loads(f.read())
+            print("msg found.")
+            print(encryptedmsg)
+            password_dec = encryptedmsg['password']
+            iv_dec = encryptedmsg['iv']
+            # lets open user2privatekey and decode the encrypted password
+            
+        else:
+            print("cant find it")
