@@ -39,17 +39,19 @@ else:
             print("can find peer's public key file, please add it to directory")
     if(o == '2'):
         # change name to peername for final application
-        encryptedmsgpath = "./encryptedmsg/"+name+"_msg.txt"
+        encryptedmsgpath = "./encryptedmsg/"+peername+"_msg.txt"
         encryptedmsgexits = os.path.isfile(encryptedmsgpath)
         if(encryptedmsgexits):
             # load encrypted msg
-            with open("./encryptedmsg/"+name+'_msg.txt', 'rb+')as f:
+            with open("./encryptedmsg/"+peername+'_msg.txt', 'rb+')as f:
                 encryptedmsg = pickle.loads(f.read())
             print("msg found.")
             print(encryptedmsg)
             password_dec = encryptedmsg['password']
             iv_dec = encryptedmsg['iv']
-            # lets open user2privatekey and decode the encrypted password
-            
+            password_dec = keysharing.dec(name+"PrivateKey.pem",b"hi",encryptedmsg['password'])
+            iv_dec = encryptedmsg['iv']
+            decryptedmsg = aes.dec(encryptedmsg['encmsg'],password_dec,iv_dec)
+            print(decryptedmsg)            
         else:
             print("cant find it")
