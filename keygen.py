@@ -4,7 +4,7 @@ from cryptography.hazmat.primitives import serialization
   
 def gen(name):
         
-    
+    encryptedpass = b"hi"
     # Generate an RSA Keys  
     private_key = rsa.generate_private_key(  
             public_exponent=65537,  
@@ -19,7 +19,7 @@ def gen(name):
         f.write(private_key.private_bytes(  
             encoding=serialization.Encoding.PEM,  
             format=serialization.PrivateFormat.TraditionalOpenSSL,  
-            encryption_algorithm=serialization.NoEncryption(),  
+            encryption_algorithm=serialization.BestAvailableEncryption(encryptedpass),  
         )  
         )  
     
