@@ -32,18 +32,18 @@ else:
             keyinfo = {"password": encryptedpassword, "iv": iv,
                        name+"publickey": mypubkey, "encmsg": encmsg}
             # we save the encrypted msg and key info to file
-            with open("./encryptedmsg/"+name+'_msg.txt', 'wb+')as f:
+            with open("./outbox/"+name+'_msg.txt', 'wb+')as f:
                 f.write(pickle.dumps(keyinfo))
             print("msg encrypted and saved.")
         else:
             print("can find peer's public key file, please add it to directory")
     if(o == '2'):
         # change name to peername for final application
-        encryptedmsgpath = "./encryptedmsg/"+peername+"_msg.txt"
+        encryptedmsgpath = "./inbox/"+peername+"_msg.txt"
         encryptedmsgexits = os.path.isfile(encryptedmsgpath)
         if(encryptedmsgexits):
             # load encrypted msg
-            with open("./encryptedmsg/"+peername+'_msg.txt', 'rb+')as f:
+            with open("./inbox/"+peername+'_msg.txt', 'rb+')as f:
                 encryptedmsg = pickle.loads(f.read())
             print("msg found.")
             print(encryptedmsg)
@@ -54,4 +54,4 @@ else:
             decryptedmsg = aes.dec(encryptedmsg['encmsg'],password_dec,iv_dec)
             print(decryptedmsg)            
         else:
-            print("cant find it")
+            print("cant find the msg")
