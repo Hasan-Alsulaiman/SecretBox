@@ -8,17 +8,17 @@ import qr
 
 name = "user1"
 peername = "user2"
-d = input("do you want to generate new private/public keys?<y>/<n>\n")
-
-if (d == 'y'):
-    print("generating new key pair...")
-    keygen.gen(name)
-
+print("Warning: make sure that 'peer_publickey' is always up to date!")
 
 o = input("pick operation\n [1]encrypt\n [2]decrypt\n")
 
 # for encryption
 if(o == '1'):
+    d = input("do you want to generate new private/public keys?<y>/<n>\n")
+
+    if (d == 'y'):
+        print("generating new key pair...")
+    keygen.gen(name)
     peerpublickeypath = "./peer_publickey/"+peername+"PublicKey.pem"
     peerpublickeyexits = os.path.isfile(peerpublickeypath)
     if(peerpublickeyexits):

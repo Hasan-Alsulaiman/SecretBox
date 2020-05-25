@@ -1,7 +1,7 @@
 import pyqrcode
 import png
 from pyqrcode import QRCode
-from pyzbar.pyzbar import decode
+
 
 # takes payload and name and returns qr code of that payload using that name
 

@@ -4,3 +4,11 @@ __pycache__/aes.cpython-37.pyc
 __pycache__/keygen.cpython-37.pyc
 __pycache__/keysharing.cpython-37.pyc
 __pycache__/qr.cpython-37.pyc
+user1PrivateKey.pem
+user1PublicKey.pem
+__pycache__/qr.cpython-38.pyc
+outbox/encmsg.png
+outbox/password-info.png
+outbox/user1_msg.txt
+outbox/user1publickey.png
+peer_publickey/user2PublicKey.pem
