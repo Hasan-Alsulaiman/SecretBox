@@ -1,2 +1,6 @@
 encryptedmsg/user2_msg.txt
 encryptedmsg/user1_msg.txt
+__pycache__/aes.cpython-37.pyc
+__pycache__/keygen.cpython-37.pyc
+__pycache__/keysharing.cpython-37.pyc
+__pycache__/qr.cpython-37.pyc
