@@ -5,7 +5,7 @@ import keygen
 import aes
 import keysharing
 import qr
-print("-------------Main Menu------------")
+print("-------------Main Menu-------------")
 name = "user1"
 peername = "user2"
 print("Warning: make sure that 'peer_publickey' is always up to date!")
@@ -66,12 +66,17 @@ while True:
             
         else:
             print("cant find the msg")
+    # generating new key pair
     if(o=='3'):
         d = input("are you sure you want new key pair?<y>/<n>\n")
 
         if (d == 'y'):
             print("generating new key pair...")
             keygen.gen(name)
-            print("new keys generated successfuly.")
+            qrimgg = input("new keys generated successfuly, generate QR image?<y>/<n>")
+            if(qrimgg == 'y'):
+                with open("./outbox/"+name+"PublicKey.pem", "r") as f:
+                    mypubkey = f.read()
+                qr.gen(mypubkey,name+"publickey","./outbox/")
     if(o=='q'):
         break
