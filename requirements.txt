@@ -1,0 +1,4 @@
+#list of required packages to run this app
+cryptography
+PyQRCode
+pypng
