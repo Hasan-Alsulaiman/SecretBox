@@ -8,7 +8,7 @@ import qr
 print("-------------Main Menu-------------")
 name = "user1"
 peername = "user2"
-print("Warning: make sure that 'peer_publickey' is always up to date!")
+print("Reminder: make sure that 'peer_publickey' is always up to date!")
 while True:
     o = input("pick operation\n [1]Encrypt\n [2]Decrypt\n [3]Generate new key pair\n or press 'q' to quit\n")
 
